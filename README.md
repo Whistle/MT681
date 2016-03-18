@@ -1,5 +1,7 @@
 # MT681
-Library that simulates the behavior of an ISKRA MT681 smart meter data manipulation.
+Library that simulates the behavior of an ISKRA MT681 smart meter.
+
+It was designed be as portable as possible so it writes data with regard to endianness.
 
 Example usage on an Arduino:
 ```c
@@ -21,5 +23,3 @@ void loop() {
     delay(1000);
 }
 ```
-
-It was designed be as portable as possible so it writes data with regard to endianness.
