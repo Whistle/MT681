@@ -1,16 +1,24 @@
 # MT681
 Library that simulates the behavior of an ISKRA MT681 smart meter data manipulation.
 
-Example usgage:
+Example usage on an Arduino:
 ```c
-int main(void) {
-    MT681 sml;
-    sml.injectActivePower(0x382);
-    sml.injectConsumption(0x3a26);
+#include <MT681.h>
 
-    for(int i; i < sml.getMessageLength(); i++) {
-        printf("0x%02x, ", MT681::message[i]);
+MT681 sml;
+
+void setup() {
+    Serial.begin(9600);
+}
+
+void loop() {
+    sml.injectActivePower(analogRead(A0));
+  
+    for(int i = 0; i < sml.getMessageLength(); i++) {
+        Serial.write(MT681::message[i]);
     }
+    Serial.flush();
+    delay(1000);
 }
 ```
 
