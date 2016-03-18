@@ -34,22 +34,22 @@
 
 class MT681
 {
-	private:
-        uint8_t littleEndian;
+private:
+    uint8_t littleEndian;
 
-        uint16_t crcX25(const uint8_t * data, uint16_t data_length);
-        uint16_t crcReflect(uint16_t data, uint8_t data_len);
-        uint8_t isLittleEndian();
-        void swapBytes(uint8_t *start, uint8_t size);
-        void patchChecksum();
+    uint16_t crcX25(const uint8_t * data, uint16_t data_length);
+    uint16_t crcReflect(uint16_t data, uint8_t data_len);
+    uint8_t isLittleEndian();
+    void swapBytes(uint8_t *start, uint8_t size);
+    void patchChecksum();
 
-	public:
-		MT681();
-        static uint8_t message[SML_MESSAGE_SIZE];
+public:
+    MT681();
+    static uint8_t message[SML_MESSAGE_SIZE];
 
-        void injectActivePower(uint32_t value);
-        void injectConsumption(uint64_t value);
-        uint16_t getMessageLength();
+    void injectActivePower(uint32_t value);
+    void injectConsumption(uint64_t value);
+    uint16_t getMessageLength();
 };
 
 #endif
