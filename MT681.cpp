@@ -76,11 +76,14 @@ uint16_t MT681::crcReflect(uint16_t data, uint8_t data_len) {
 void MT681::swapBytes(uint8_t *start, uint8_t size) {
     uint8_t *lo = start;
     uint8_t *hi = start + size - 1;
-    uint8_t swap;
-    while (lo < hi) {
-        swap = *lo;
-        *lo++ = *hi;
-        *hi-- = swap;
+
+    //XOR swap algorithm
+    for (;lo < hi;lo++, hi--) {
+        if (lo != hi) {
+            *lo ^= *hi;
+            *hi ^= *lo;
+            *lo ^= *hi;
+        }
     }
 }
 
